@@ -14,9 +14,9 @@ class Solution {
     }
     
     int computeAnswers(int[] range) {
-        double answer = 1;
+        long answer = 1;
         for(int i = range[0]; i <= range[1]; i++) {
-            answer *= powers.get(i);
+            answer = (answer * powers.get(i)) % mod;
         }
         return (int) Math.ceil(answer % mod);
     }
@@ -24,7 +24,6 @@ class Solution {
     public int[] productQueries(int n, int[][] queries) {
         int[] res = new int[queries.length];
         this.powers = generatePowersArray(n);
-        // System.out.println(powers);
         int i = 0;
         while( i < queries.length) {
             res[i] = computeAnswers(queries[i++]);
