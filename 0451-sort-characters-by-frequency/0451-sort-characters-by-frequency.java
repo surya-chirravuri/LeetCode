@@ -10,27 +10,18 @@ class Pair {
 class Solution {
     public String frequencySort(String s) {
         int[] freq = new int[256];
+        List<Character> letters = Arrays.asList(new Character[s.length()]);
         for(int i = 0 ; i < s.length(); i++) {
             int ascii = s.charAt(i);
             freq[ascii]++;
+            letters.set(i, s.charAt(i));
         }
         
-        Queue<Pair> pq = new PriorityQueue<>((Pair a, Pair b) -> b.count - a.count);
-        
-        for(int i = 0; i < 256; i++) {
-            if(freq[i] > 0) {
-                pq.offer(new Pair( (char) i, freq[i]));
-            }
-        }
-                     
+        Collections.sort(letters, (a, b) -> freq[b] != freq[a] ? freq[b] - freq[a] : b-a);
         StringBuilder result = new StringBuilder();
-        while(!pq.isEmpty()) {
-            Pair top = pq.poll();
-            for (int i = 0 ; i < top.count; i++) {
-                result.append(top.letter);
-            }
+        for(char letter: letters) {
+          result.append(letter);  
         }
-        
         return result.toString();
     }
 }
