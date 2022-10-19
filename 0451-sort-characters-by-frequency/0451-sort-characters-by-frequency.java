@@ -1,12 +1,3 @@
-class Pair {
-    public char letter;
-    public int count;
-    
-    Pair(char letter, int count) {
-        this.letter = letter;
-        this.count = count;
-    }
-}
 class Solution {
     public String frequencySort(String s) {
         int[] freq = new int[256];
