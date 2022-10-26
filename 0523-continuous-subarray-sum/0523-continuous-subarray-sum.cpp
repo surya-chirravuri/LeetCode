@@ -8,9 +8,9 @@ public:
         for(int i = 0; i < nums.size(); i++) {
             sum += nums[i];
             int rem = sum % k;
-            if((remMap.find(rem) != remMap.end() && i - remMap[rem] >= 2|| !rem && i != 0)) 
+            if(remMap.count(rem) && i - remMap[rem] >= 2|| !rem && i != 0)
                 return true;
-            remMap[rem] = remMap.find(rem) == remMap.end() ? i : remMap[rem];
+            remMap[rem] = !remMap.count(rem) ? i : remMap[rem];
         }
         return false;
     }
