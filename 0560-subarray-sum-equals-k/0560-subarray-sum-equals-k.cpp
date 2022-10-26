@@ -7,7 +7,7 @@ public:
         countSum[0] = 1;
         for(auto num: nums) {
             sum += num;
-            count += (countSum[sum - k] );
+            count += countSum[sum - k];
             countSum[sum]++;
         }
         return count;
