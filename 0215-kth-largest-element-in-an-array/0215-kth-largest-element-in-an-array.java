@@ -11,12 +11,7 @@ class Solution {
                 minHeap.offer(num);
             }
         }
-        int res = minHeap.peek();
         
-        // while (!minHeap.isEmpty()) {
-        //     System.out.print(minHeap.poll() + " ");
-        // }
-        
-        return res;
+        return minHeap.peek();
     }
 }
