@@ -6,7 +6,7 @@ class Solution {
         PriorityQueue<int[]> maxHeap = new PriorityQueue<int[]>((int[] a, int[] b) -> {
             return distanceFromOrigin(b) - distanceFromOrigin(a);
         });
-        int index = 0;
+       
         for(int[] point : points) {
             if(maxHeap.size() == k) {
                 if(distanceFromOrigin(maxHeap.peek()) > distanceFromOrigin(point)) {
@@ -16,11 +16,9 @@ class Solution {
             } else {
                 maxHeap.offer(point);
             }
-            // index++;
         }
         int[][] res = new int[k][2];
         while(--k >= 0) {
-            // index = maxHeap.poll().get(0);
             res[k] = maxHeap.poll();
         }
         
