@@ -1,20 +1,13 @@
 class Solution {
-    public int distanceFromOrigin(int[] point) {
-        return point[1] * point[1] + point[0] * point[0];
-    }
     public int[][] kClosest(int[][] points, int k) {
         PriorityQueue<int[]> maxHeap = new PriorityQueue<int[]>((int[] a, int[] b) -> {
-            return distanceFromOrigin(b) - distanceFromOrigin(a);
+            return (b[1] * b[1] + b[0] * b[0]) - (a[1] * a[1] + a[0] * a[0]);
         });
        
         for(int[] point : points) {
-            if(maxHeap.size() == k) {
-                if(distanceFromOrigin(maxHeap.peek()) > distanceFromOrigin(point)) {
-                    maxHeap.poll();
-                    maxHeap.offer(point);
-                }
-            } else {
-                maxHeap.offer(point);
+            maxHeap.offer(point);
+            if(maxHeap.size() > k) {
+                maxHeap.poll();
             }
         }
         int[][] res = new int[k][2];
