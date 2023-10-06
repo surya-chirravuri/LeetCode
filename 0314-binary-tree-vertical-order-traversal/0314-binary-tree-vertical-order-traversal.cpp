@@ -17,9 +17,7 @@ public:
         queue<pair<TreeNode*,int>> q;
         if(root) q.emplace(root, 0);
         while(!q.empty()) {
-            auto peek = q.front();
-            auto node = peek.first;
-            auto level = peek.second;
+            auto [node,level] = q.front();
             levels[level].emplace_back(node->val);
             q.pop();
             if(node -> left) {
