@@ -5,7 +5,6 @@ public:
     }
     
     pair<int,int> getNumber(string abbr, int index) {
-        // if(abbr[index] >= '0' && abbr[index] <= '9') return {-1, index};
         if(abbr[index] == '0') return {-1, -1};
         int num = 0;
         while(index < abbr.size() && isNumber(abbr[index])) {
@@ -19,19 +18,16 @@ public:
         while(i < word.size() && j < abbr.size()) {
             auto [num, next] = getNumber(abbr, j);
             if(next == -1) return false;
-            // cout<<i<<" "<<j<<" "<<num<<" "<<next<<endl;
             int increment = 0;
             while( increment < num && i < word.size()) {
                 increment++, i++;
             }
             if( i == word.size()) {
-                // cout<<"a"<<" "<<abbr[j];
                 if(next != abbr.size() || increment != num)
                     return false;
             }
             if(next == j ) {
                 if(word[i] != abbr[j]) {
-                    // cout<<"b";
                     return false;
                 }
                 i++, j++;
