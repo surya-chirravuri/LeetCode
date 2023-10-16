@@ -9,7 +9,7 @@ public:
     }
     
     string simplifyPath(string path) {
-        string res = "/";
+        string res = "";
         deque<string> dirs;
         string dir = "";
         for(int i = 0; i < path.size(); i++) {
@@ -23,11 +23,8 @@ public:
         }
         int i = 0;
         for(auto dir: dirs) {
-            res += dir;
-            if(i != dirs.size()-1)
-                res += "/";
-            i++;
+            res += "/" + dir;
         }
-        return  res;
+        return res.empty() ? "/" : res;
     }
 };
