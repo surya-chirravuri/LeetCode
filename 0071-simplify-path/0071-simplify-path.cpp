@@ -1,7 +1,6 @@
 class Solution {
 public:
     void dequeAppend(deque<string> &dirs, string dir) {
-        // cout<<dir<<endl;
         if(dir.empty() || dir == ".") return;
         if(dir == "..") {
             if(!dirs.empty()) dirs.pop_back();
