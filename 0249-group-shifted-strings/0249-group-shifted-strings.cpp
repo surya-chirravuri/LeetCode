@@ -15,11 +15,6 @@ public:
         }
         vector<vector<string>> result;
         for(auto entry: shifted){
-            // cout<<entry.first <<" "<<"[";
-            // for(auto s: entry.second) {
-            //     cout<<s<<",";
-            // }
-            // cout<<"]"<<endl;
             result.push_back(entry.second);
         }
         return result;
